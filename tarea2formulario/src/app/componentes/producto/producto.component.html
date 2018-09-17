@@ -1,0 +1,43 @@
+<form name="formularioProducto" ngNativeValidate #formularioProducto (submit)="agregarProducto(formularioProducto)">
+   
+    <p>The input's valid state is:</p>
+    <h1>{{formularioProducto}}</h1>
+
+ <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input [(ngModel)] = "nuevoProducto.nombre" name="nombre" type="text" #nombre class="form-control" required >
+    </div>
+    <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input [(ngModel)] = "nuevoProducto.precio" name="precio" type="number" step="0.1" #precio class="form-control" required min="1">
+    </div>
+
+    <div class="form-group">
+        <label for="existencia">Existencia:</label>
+        <input [(ngModel)] = "nuevoProducto.existencia" name="existencia" type="number" #existencia class="form-control" required min="1">
+    </div>
+
+    <div class="form-group">
+        <label for="fecha_vencimiento">Fecha - Vencimiento:</label>
+        <input [(ngModel)] = "nuevoProducto.fechaVencimiento" name="fecha_vencimiento" type="date" #fecha_vencimiento class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Agregar Producto</button>
+</form>
+<br>
+<button type="button" class="btn btn-warning" (click)="mostrarProductosHandler()">
+  MostratProductos
+</button>
+<table class="table" *ngIf="mostratProductos.estado">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Existencia</th>
+        <th scope="col">Fecha - Vencimiento</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+    </tbody>
+</table>
